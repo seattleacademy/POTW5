@@ -9,7 +9,10 @@ function upTime() {
 }
 
 $("input").change(onChange);
-
+function enableAll(){
+    $("input").prop( "disabled",false );
+    console.log('enableall')
+}
 function onChange(evt) {
   let correct = $(this).data("correct");
   let response = $(this).val();
@@ -27,5 +30,8 @@ function onChange(evt) {
     $(this)
       .removeClass("correct")
       .addClass("incorrect");
+      $( this ).prop( "disabled", true );
+
+      setTimeout(enableAll,10000);
   }
 }
